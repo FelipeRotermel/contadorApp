@@ -23,16 +23,19 @@ export default class Counter extends Component {
     render() {
         return (
             <View style={styles.contador}>
+                <Text style={styles.box}>Contador: {this.state.count}</Text>
                 <TextInput 
                     value={ this.state.step.toString()}
                     onChangeText={(text) => this.alteraStep(text)}
                     inputMode="numeric"
                     keyboardType="numeric"
                     style={styles.input}
-                 />
-                <Text>Contador: {this.state.count}</Text>
-                <Button onPress={() => this.incrementar()} title="+"/> 
-                <Button onPress={() => this.decrementar()} title="-"/>
+                    max = {10}
+                />
+                <View style={styles.button}>
+                    <Button style={styles.button1} onPress={() => this.incrementar()} title="+"/>
+                    <Button style={styles.button2} onPress={() => this.decrementar()} title="-"/>
+                </View>
             </View>
         );
     }
@@ -41,15 +44,47 @@ export default class Counter extends Component {
 const styles = StyleSheet.create({
     contador: {
         flex: 1,
-        flexDirection: 'row',
+        justifyContent: 'center',
         alignItems: 'center',
-        margin: 10,
+        width: '100%',
+        backgroundColor: '#ADD8E6',
+        shadowColor: "#000",
+        shadowOffset: {
+	        width: 0,
+	        height: 8,
+        },
+        shadowOpacity: 0.44,
+        shadowRadius: 10.32,
+        elevation: 16,
     },
     input: {
         width: 100,
         height: 40,
         backgroundColor: 'grey',
         textAlign: 'center',
-        borderRadius: '5',
-    }
+        borderRadius: 50,
+    },
+    box : {
+        fontSize: 15,
+        width: 100,
+        paddingTop: 5,
+        paddingBottom: 5,
+        backgroundColor: '#93bac7',
+        textAlign: 'center',
+        shadowColor: "#000",
+        shadowOffset: {
+	        width: 0,
+	        height: 8,
+        },
+        shadowOpacity: 0.44,
+        shadowRadius: 10.32,
+        elevation: 16,
+    },
+    button: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+    },
+    button1: {
+        padding: 10,
+    },
 });
